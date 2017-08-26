@@ -21,4 +21,4 @@ def total_revenue(order_ht):
             current_order["subtotal_price"], current_order["total_tax"])
     return revenue_ht
 
-total_revenue(order)
+# total_revenue(order)
