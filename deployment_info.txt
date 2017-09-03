@@ -1,0 +1,61 @@
+Name:			hello-rails
+Namespace:		default
+CreationTimestamp:	Sun, 03 Sep 2017 10:57:27 -0400
+Labels:			run=hello-rails
+Annotations:		deployment.kubernetes.io/revision=1
+Selector:		run=hello-rails
+Replicas:		1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:		Recreate
+MinReadySeconds:	0
+Pod Template:
+  Labels:	run=hello-rails
+  Containers:
+   hello-rails:
+    Image:	benjamincaldwell/hello-docker-rails:latest
+    Port:	3000/TCP
+    Environment:
+      MYSQL_USER:	root
+      MYSQL_PASSWORD:	password
+      MYSQL_HOST:	mysql.default.svc.cluster.local
+    Mounts:		<none>
+  Volumes:		<none>
+Conditions:
+  Type		Status	Reason
+  ----		------	------
+  Available 	True	MinimumReplicasAvailable
+  Progressing 	True	NewReplicaSetAvailable
+OldReplicaSets:	<none>
+NewReplicaSet:	hello-rails-3329821780 (1/1 replicas created)
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason			Message
+  ---------	--------	-----	----			-------------	--------	------			-------
+  12m		12m		1	deployment-controller			Normal		ScalingReplicaSet	Scaled up replica set hello-rails-3329821780 to 1
+
+
+Name:			hello-rails-db
+Namespace:		default
+CreationTimestamp:	Sat, 02 Sep 2017 16:46:42 -0400
+Labels:			run=hello-rails-db
+Annotations:		deployment.kubernetes.io/revision=1
+Selector:		run=hello-rails-db
+Replicas:		1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:		Recreate
+MinReadySeconds:	0
+Pod Template:
+  Labels:	run=hello-rails-db
+  Containers:
+   hello-rails-db:
+    Image:	mysql
+    Port:	3306/TCP
+    Environment:
+      MYSQL_ROOT_PASSWORD:	password
+    Mounts:			<none>
+  Volumes:			<none>
+Conditions:
+  Type		Status	Reason
+  ----		------	------
+  Progressing 	True	NewReplicaSetAvailable
+  Available 	True	MinimumReplicasAvailable
+OldReplicaSets:	<none>
+NewReplicaSet:	hello-rails-db-3185804656 (1/1 replicas created)
+Events:		<none>

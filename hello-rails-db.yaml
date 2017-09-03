@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: mysql
+   labels:
+     run: hello-rails-db
+spec:
+   ports:
+   - name: http
+     protocol: TCP
+     port: 3306
+     targetPort: 3306
+   selector:
+     run: hello-rails-db
+
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-rails-db
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        run: hello-rails-db
+    spec:
+      containers:
+      - name: hello-rails-db
+        image: mysql
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password

@@ -1,0 +1,103 @@
+Name:		hello-rails-3329821780-pwptx
+Namespace:	default
+Node:		minikube/192.168.99.100
+Start Time:	Sun, 03 Sep 2017 10:57:27 -0400
+Labels:		pod-template-hash=3329821780
+		run=hello-rails
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"default","name":"hello-rails-3329821780","uid":"33e5d27c-90b8-11e7-815d-080027019...
+Status:		Running
+IP:		172.17.0.4
+Created By:	ReplicaSet/hello-rails-3329821780
+Controlled By:	ReplicaSet/hello-rails-3329821780
+Containers:
+  hello-rails:
+    Container ID:	docker://da53b54c0d16635ecfa0bb69711f606f814a42608964c82722f357dcdc0f7d6e
+    Image:		benjamincaldwell/hello-docker-rails:latest
+    Image ID:		docker-pullable://benjamincaldwell/hello-docker-rails@sha256:80013937f9d037e2e5406dff4ce6f16f80ae0c2f166a49629ac947cdba450696
+    Port:		3000/TCP
+    State:		Running
+      Started:		Sun, 03 Sep 2017 10:57:29 -0400
+    Ready:		True
+    Restart Count:	0
+    Environment:
+      MYSQL_USER:	root
+      MYSQL_PASSWORD:	password
+      MYSQL_HOST:	mysql.default.svc.cluster.local
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-3z0wz (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-3z0wz:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-3z0wz
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath			Type		Reason			Message
+  ---------	--------	-----	----			-------------			--------	------			-------
+  17m		17m		1	default-scheduler					Normal		Scheduled		Successfully assigned hello-rails-3329821780-pwptx to minikube
+  17m		17m		1	kubelet, minikube					Normal		SuccessfulMountVolume	MountVolume.SetUp succeeded for volume "default-token-3z0wz" 
+  17m		17m		1	kubelet, minikube	spec.containers{hello-rails}	Normal		Pulling			pulling image "benjamincaldwell/hello-docker-rails:latest"
+  17m		17m		1	kubelet, minikube	spec.containers{hello-rails}	Normal		Pulled			Successfully pulled image "benjamincaldwell/hello-docker-rails:latest"
+  17m		17m		1	kubelet, minikube	spec.containers{hello-rails}	Normal		Created			Created container
+  17m		17m		1	kubelet, minikube	spec.containers{hello-rails}	Normal		Started			Started container
+
+
+Name:		hello-rails-db-3185804656-0z097
+Namespace:	default
+Node:		minikube/192.168.99.100
+Start Time:	Sat, 02 Sep 2017 16:46:42 -0400
+Labels:		pod-template-hash=3185804656
+		run=hello-rails-db
+Annotations:	kubernetes.io/created-by={"kind":"SerializedReference","apiVersion":"v1","reference":{"kind":"ReplicaSet","namespace":"default","name":"hello-rails-db-3185804656","uid":"d3916a31-901f-11e7-a93d-080027...
+Status:		Running
+IP:		172.17.0.2
+Created By:	ReplicaSet/hello-rails-db-3185804656
+Controlled By:	ReplicaSet/hello-rails-db-3185804656
+Containers:
+  hello-rails-db:
+    Container ID:	docker://82b2cdd379e0712ab549f79295ca50364baa9e7c531cf817075d811628130511
+    Image:		mysql
+    Image ID:		docker-pullable://mysql@sha256:96edf37370df96d2a4ee1715cc5c7820a0ec6286551a927981ed50f0273d9b43
+    Port:		3306/TCP
+    State:		Running
+      Started:		Sun, 03 Sep 2017 10:16:03 -0400
+    Last State:		Terminated
+      Reason:		Completed
+      Exit Code:	0
+      Started:		Sat, 02 Sep 2017 16:47:34 -0400
+      Finished:		Sun, 03 Sep 2017 10:15:32 -0400
+    Ready:		True
+    Restart Count:	1
+    Environment:
+      MYSQL_ROOT_PASSWORD:	password
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-3z0wz (ro)
+Conditions:
+  Type		Status
+  Initialized 	True 
+  Ready 	True 
+  PodScheduled 	True 
+Volumes:
+  default-token-3z0wz:
+    Type:	Secret (a volume populated by a Secret)
+    SecretName:	default-token-3z0wz
+    Optional:	false
+QoS Class:	BestEffort
+Node-Selectors:	<none>
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath			Type		Reason			Message
+  ---------	--------	-----	----			-------------			--------	------			-------
+  59m		59m		1	kubelet, minikube					Normal		SuccessfulMountVolume	MountVolume.SetUp succeeded for volume "default-token-3z0wz" 
+  59m		59m		1	kubelet, minikube					Normal		SandboxChanged		Pod sandbox changed, it will be killed and re-created.
+  59m		59m		1	kubelet, minikube	spec.containers{hello-rails-db}	Normal		Pulling			pulling image "mysql"
+  59m		59m		1	kubelet, minikube	spec.containers{hello-rails-db}	Normal		Pulled			Successfully pulled image "mysql"
+  59m		59m		1	kubelet, minikube	spec.containers{hello-rails-db}	Normal		Created			Created container
+  59m		59m		1	kubelet, minikube	spec.containers{hello-rails-db}	Normal		Started			Started container

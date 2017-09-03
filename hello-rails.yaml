@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: hello-rails
+   labels:
+     run: hello-rails
+spec:
+   ports:
+   - name: http
+     protocol: TCP
+     port: 3000
+     targetPort: 3000 
+   type: NodePort
+   selector:
+     run: hello-rails
+
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-rails
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        run: hello-rails
+    spec:
+      containers:
+      - name: hello-rails
+        image: benjamincaldwell/hello-docker-rails:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MYSQL_USER
+          value: root
+        - name: MYSQL_PASSWORD
+          value: password
+        - name: MYSQL_HOST
+          value: mysql.default.svc.cluster.local
