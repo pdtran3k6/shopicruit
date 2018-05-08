@@ -6,3 +6,4 @@ Positions | Term
 Backend | Spring 2017
 Backend | Winter 2018
 Prod/Infra | Winter 2018
+SE Data | Fall 2018
