@@ -1,2 +1,7 @@
 # Ignore DS_Store
 .DS_Store
+
+# Ignore vscode and other stuff
+.vscode
+node_modules/
+package-lock.json
